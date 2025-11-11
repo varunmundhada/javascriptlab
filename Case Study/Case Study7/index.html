@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form using JavaScript</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .container {
+      background: #fff;
+      width: 400px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b6cb0;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 6px;
+    }
+
+    .terms {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .btn {
+      background-color: #2b6cb0;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #1e4f8a;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+    }
+
+    span.star {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Sign Up Form</h2>
+    <p>*Mandatory to fill</p>
+
+    <form id="signupForm" onsubmit="return validateForm()">
+
+      <label>Firstname:<span class="star">*</span></label>
+      <input type="text" id="fname" placeholder="Enter first name">
+
+      <label>Lastname:</label>
+      <input type="text" id="lname" placeholder="Enter last name">
+
+      <label>Birthday:</label>
+      <div style="display: flex; gap: 5px;">
+        <select id="day">
+          <option value="">Day</option>
+          <script>
+            for (let i = 1; i <= 31; i++) {
+              document.write(`<option value="${i}">${i}</option>`);
+            }
+          </script>
+        </select>
+
+        <select id="month">
+          <option value="">Month</option>
+          <option>January</option><option>February</option><option>March</option>
+          <option>April</option><option>May</option><option>June</option>
+          <option>July</option><option>August</option><option>September</option>
+          <option>October</option><option>November</option><option>December</option>
+        </select>
+
+        <select id="year">
+          <option value="">Year</option>
+          <script>
+            for (let y = 2025; y >= 1900; y--) {
+              document.write(`<option value="${y}">${y}</option>`);
+            }
+          </script>
+        </select>
+      </div>
+
+      <label>Username:<span class="star">*</span></label>
+      <input type="text" id="username" placeholder="Enter username">
+
+      <label>E-mail:</label>
+      <input type="email" id="email" placeholder="Enter email">
+
+      <label>Website:</label>
+      <input type="url" id="website" placeholder="Enter website (optional)">
+
+      <label>Password:<span class="star">*</span></label>
+      <input type="password" id="password" placeholder="Enter password">
+
+      <label>Re-password:<span class="star">*</span></label>
+      <input type="password" id="repassword" placeholder="Re-enter password">
+
+      <div class="terms">
+        <input type="checkbox" id="agree">
+        <label for="agree">I agree to the terms & conditions.</label>
+      </div>
+
+      <button type="submit" class="btn">Sign Up</button>
+      <p id="errorMsg" class="error"></p>
+    </form>
+  </div>
+
+  <script>
+    // Function to validate the form before submission
+    function validateForm() {
+      let fname = document.getElementById("fname").value.trim();
+      let username = document.getElementById("username").value.trim();
+      let password = document.getElementById("password").value;
+      let repassword = document.getElementById("repassword").value;
+      let email = document.getElementById("email").value.trim();
+      let agree = document.getElementById("agree").checked;
+      let error = "";
+
+      // Check for mandatory fields
+      if (fname === "" || username === "" || password === "" || repassword === "") {
+        error = "Please fill all mandatory (*) fields.";
+      }
+      else if (password.length < 6) {
+        error = "Password should be at least 6 characters long.";
+      }
+      else if (password !== repassword) {
+        error = "Passwords do not match!";
+      }
+      else if (email && !email.includes("@")) {
+        error = "Please enter a valid email address.";
+      }
+      else if (!agree) {
+        error = "You must agree to the terms and conditions.";
+      }
+
+      // Display error message
+      document.getElementById("errorMsg").textContent = error;
+
+      // Prevent form submission if error exists
+      return error === "";
+    }
+  </script>
+
+</body>
+</html>

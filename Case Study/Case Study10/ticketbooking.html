@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Workshop Ticket Booking</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f4f7fa;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b6cb0;
+    }
+
+    form {
+      width: 450px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 15px;
+      width: 100%;
+      background-color: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1e4f8a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Technical Workshop Ticket Booking</h2>
+
+  <form onsubmit="return submitForm()">
+    <label>Full Name:</label>
+    <input type="text" id="name" required>
+
+    <label>Email ID:</label>
+    <input type="email" id="email" required>
+
+    <label>Contact Number:</label>
+    <input type="tel" id="contact" maxlength="10" required>
+
+    <label>College Name:</label>
+    <input type="text" id="college" required>
+
+    <label>Branch:</label>
+    <select id="branch" required>
+      <option value="">--Select Branch--</option>
+      <option>CSE</option>
+      <option>IT</option>
+      <option>ECE</option>
+      <option>Mechanical</option>
+      <option>Civil</option>
+    </select>
+
+    <label>Workshop Type:</label>
+    <select id="workshop" required>
+      <option value="">--Select Workshop--</option>
+      <option>AI and Machine Learning</option>
+      <option>Web Development</option>
+      <option>Cyber Security</option>
+      <option>Data Science</option>
+    </select>
+
+    <label>Number of Tickets:</label>
+    <input type="number" id="tickets" min="1" max="5" required>
+
+    <button type="submit">Book Ticket</button>
+  </form>
+
+  <script>
+    function submitForm() {
+      let name = document.getElementById("name").value;
+      let workshop = document.getElementById("workshop").value;
+      alert("🎟️ Thank you, " + name + "! Your ticket for the " + workshop + " workshop has been booked successfully.");
+      return false; // prevent form submission for demo
+    }
+  </script>
+
+</body>
+</html>

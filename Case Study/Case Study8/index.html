@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Admission Form</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f7f9fb;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b6cb0;
+    }
+
+    table {
+      width: 60%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e2e8f0;
+      width: 40%;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 90%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .btn {
+      display: block;
+      margin: 20px auto;
+      background-color: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #1e4f8a;
+    }
+
+    #message {
+      text-align: center;
+      color: red;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    #success {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Gym Admission Registration Form</h2>
+
+  <form id="gymForm" onsubmit="return validateGymForm()">
+    <table>
+      <tr>
+        <th>Name:</th>
+        <td><input type="text" id="name" placeholder="Enter your full name"></td>
+      </tr>
+
+      <tr>
+        <th>Sex:</th>
+        <td>
+          <input type="radio" name="sex" value="Male">Male
+          <input type="radio" name="sex" value="Female">Female
+        </td>
+      </tr>
+
+      <tr>
+        <th>Eye color:</th>
+        <td>
+          <select id="eyeColor">
+            <option value="">-- Select Eye Color --</option>
+            <option value="brown">Brown</option>
+            <option value="black">Black</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Check all that apply:</th>
+        <td>
+          <input type="checkbox" id="tall"> Over 6 feet tall <br>
+          <input type="checkbox" id="weight"> Over 200 pounds
+        </td>
+      </tr>
+
+      <tr>
+        <th>Describe your athletic ability:</th>
+        <td>
+          <textarea id="ability" rows="4" placeholder="Describe here..."></textarea>
+        </td>
+      </tr>
+    </table>
+
+    <button type="submit" class="btn">Enter my information</button>
+  </form>
+
+  <div id="message"></div>
+  <div id="success"></div>
+
+  <script>
+    // Function to validate the Gym Admission Form
+    function validateGymForm() {
+      let name = document.getElementById("name").value.trim();
+      let eyeColor = document.getElementById("eyeColor").value;
+      let sex = document.querySelector('input[name="sex"]:checked');
+      let ability = document.getElementById("ability").value.trim();
+
+      let message = "";
+
+      // Validation checks
+      if (name === "") {
+        message = "Please enter your name.";
+      } 
+      else if (!sex) {
+        message = "Please select your gender.";
+      } 
+      else if (eyeColor === "") {
+        message = "Please select your eye color.";
+      } 
+      else if (ability === "") {
+        message = "Please describe your athletic ability.";
+      }
+
+      // Display validation message
+      document.getElementById("message").textContent = message;
+
+      // Stop form submission if error
+      if (message !== "") {
+        document.getElementById("success").textContent = "";
+        return false;
+      }
+
+      // If all is valid
+      document.getElementById("message").textContent = "";
+      document.getElementById("success").textContent = "Form submitted successfully!";
+      return false; // prevent actual form submission for demo
+    }
+
+    // Optional JS events
+    document.getElementById("name").addEventListener("focus", function() {
+      document.getElementById("message").textContent = "Please enter your full name.";
+    });
+
+    document.getElementById("name").addEventListener("blur", function() {
+      document.getElementById("message").textContent = "";
+    });
+  </script>
+
+</body>
+</html>

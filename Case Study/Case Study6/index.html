@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations using JavaScript</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #2b6cb0;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1a4f8a;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #edf2f7;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        h3 {
+            color: #2f855a;
+            margin-top: 20px;
+        }
+
+        hr {
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>String Utilities — Beginner Examples</h1>
+
+    <div class="container">
+    <h3>Basic String Info</h3>
+    <input type="text" id="basicStr" placeholder="Type a short sentence or word">
+    <button onclick="basicStringOps()">Show Basic Info</button>
+    <div id="basicOutput" class="output"></div>
+
+        <hr>
+
+    <h3>String Tools</h3>
+    <input type="text" id="mainStr" placeholder="Enter a sentence to analyze">
+    <input type="text" id="searchStr" placeholder="Word to find (optional)">
+    <input type="text" id="replaceStr" placeholder="Replacement (optional)">
+    <button onclick="advancedStringOps()">Run String Tools</button>
+    <div id="advancedOutput" class="output"></div>
+
+        <hr>
+
+    <h3>Reverse a String</h3>
+    <input type="text" id="reverseStr" placeholder="Enter text to reverse">
+    <button onclick="reverseString()">Reverse</button>
+    <div id="reverseOutput" class="output"></div>
+
+        <hr>
+
+    <h3>Count Vowels in a Paragraph</h3>
+    <textarea id="paraInput" rows="5" placeholder="Hello My name is Varun"></textarea>
+    <button onclick="countVowels()">Count Vowels</button>
+    <div id="vowelOutput" class="output"></div>
+    </div>
+
+    <script>
+        function basicStringOps() {
+            const str = document.getElementById("basicStr").value || "";
+            const firstChar = str.length > 0 ? str.charAt(0) : "(none)";
+            const lastChar = str.length > 0 ? str.charAt(str.length - 1) : "(none)";
+
+            const output = `
+                You entered: ${str} <br>
+                Length: ${str.length} <br>
+                Uppercase: ${str.toUpperCase()} <br>
+                Lowercase: ${str.toLowerCase()} <br>
+                First character: ${firstChar} <br>
+                Last character: ${lastChar}
+            `;
+
+            document.getElementById("basicOutput").innerHTML = output;
+        }
+
+        function advancedStringOps() {
+            const str = document.getElementById("mainStr").value || "";
+            const search = document.getElementById("searchStr").value;
+            const replaceWith = document.getElementById("replaceStr").value;
+
+            const substringPart = str.substring(0, 10);
+            const index = search ? str.indexOf(search) : -1;
+            const words = str.length ? str.split(" ") : [];
+            const replaced = search ? str.replace(search, replaceWith || "") : str;
+
+            const output = `
+                Substring (first 10 chars): ${substringPart} <br>
+                Index of "${search}": ${index} <br>
+                Words: ${words.join(" | ")} <br>
+                After replace: ${replaced}
+            `;
+
+            document.getElementById("advancedOutput").innerHTML = output;
+        }
+
+        function reverseString() {
+            const str = document.getElementById("reverseStr").value || "";
+            const reversed = str.split("").reverse().join("");
+            document.getElementById("reverseOutput").innerHTML = `Reversed: ${reversed}`;
+        }
+
+        function countVowels() {
+            const para = (document.getElementById("paraInput").value || "").toLowerCase();
+            const matches = para.match(/[aeiou]/g);
+            const count = matches ? matches.length : 0;
+            document.getElementById("vowelOutput").innerHTML = `Total vowels found: ${count}`;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Music Concert Registration</title>
+
+  <style>
+    body {
+      background: linear-gradient(to right, #8ec5fc, #e0c3fc);
+      font-family: "Segoe UI", sans-serif;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #222;
+    }
+
+    form {
+      width: 400px;
+      background: white;
+      padding: 25px 30px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkbox {
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      width: 100%;
+      background-color: #4a148c;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #6a1b9a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Online Music Concert Registration</h2>
+
+  <form onsubmit="return showAlert()">
+    <label>Name:</label>
+    <input type="text" id="name" required>
+
+    <label>Email:</label>
+    <input type="email" id="email" required>
+
+    <label>Preferred Genre:</label>
+    <select id="genre" required>
+      <option value="">--Select Genre--</option>
+      <option>Pop</option>
+      <option>Rock</option>
+      <option>Classical</option>
+      <option>Jazz</option>
+      <option>Bollywood</option>
+    </select>
+
+    <div class="checkbox">
+      <input type="checkbox" id="vip"> I want a VIP Pass
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    function showAlert() {
+      let name = document.getElementById("name").value;
+      let genre = document.getElementById("genre").value;
+      let vip = document.getElementById("vip").checked ? "with VIP Pass 🎟️" : "with Normal Pass";
+      alert(`🎶 Hello ${name}! You have successfully registered for the ${genre} concert ${vip}.`);
+      return false;
+    }
+  </script>
+
+</body>
+</html>

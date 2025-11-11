@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Utilities</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #34495e;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            min-height: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Number Reverser & Palindrome Checker</h1>
+
+    <div class="container">
+        <h2>Flip Your Number Around</h2>
+        <input type="number" id="reverseInput" placeholder="Type any number here...">
+        <button onclick="handleReverse()">Let's Reverse It!</button>
+        <p id="reverseResult" class="result"></p>
+    </div>
+
+    <div class="container">
+        <h2>Is It a Palindrome?</h2>
+        <input type="number" id="palindromeInput" placeholder="Enter a number to test...">
+        <button onclick="handlePalindrome()">Find Out!</button>
+        <p id="palindromeResult" class="result"></p>
+    </div>
+
+    <script>
+        function reverseNumber(num) {
+            if (typeof num !== 'number' || isNaN(num)) {
+                return NaN;
+            }
+            const numStr = String(Math.abs(num));
+            const reversedStr = numStr.split('').reverse().join('');
+            let reversedNum = parseInt(reversedStr, 10);
+            return num < 0 ? reversedNum * -1 : reversedNum;
+        }
+
+        function isPalindromeNumber(num) {
+            if (typeof num !== 'number' || isNaN(num) || num < 0) {
+                return false;
+            }
+            return num === reverseNumber(num);
+        }
+
+        function handleReverse() {
+            const inputElement = document.getElementById('reverseInput');
+            const resultElement = document.getElementById('reverseResult');
+            const originalNumber = parseFloat(inputElement.value);
+
+            if (isNaN(originalNumber)) {
+                resultElement.textContent = "Oops! That doesn't look like a valid number. Try again!";
+                resultElement.style.color = "#e74c3c";
+                return;
+            }
+
+            const reversed = reverseNumber(originalNumber);
+            resultElement.textContent = `Ta-da! Your number backwards is: ${reversed}`;
+            resultElement.style.color = "#2c3e50";
+        }
+
+        function handlePalindrome() {
+            const inputElement = document.getElementById('palindromeInput');
+            const resultElement = document.getElementById('palindromeResult');
+            const numberToCheck = parseFloat(inputElement.value);
+            
+            if (isNaN(numberToCheck)) {
+                resultElement.textContent = "Hmm, I need a proper number to work with!";
+                resultElement.style.color = "#e74c3c";
+                return;
+            }
+
+            if (isPalindromeNumber(numberToCheck)) {
+                resultElement.textContent = ` Amazing! ${numberToCheck} reads the same forwards and backwards!`;
+                resultElement.style.color = "#27ae60";
+            } else {
+                resultElement.textContent = `Nope, ${numberToCheck} isn't a palindrome. But that's okay!`;
+                resultElement.style.color = "#c0392b";
+            }
+        }
+    </script>
+
+</body>
+</html>

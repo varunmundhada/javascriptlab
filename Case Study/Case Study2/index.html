@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIT Shop - Online Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>SIT Shop</h1>
+        <nav>
+            <a href="#products">Products</a>
+            <a href="#cart">Your Cart</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="products">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <article class="product-card" data-name="Laptop" data-price="1200.00">
+                    <figure>
+                        <img src="https://via.placeholder.com/150/0000FF/FFFFFF?text=Laptop" alt="Laptop">
+                        <figcaption>Powerful Laptop</figcaption>
+                    </figure>
+                    <h3>Powerful Laptop</h3>
+                    <p>High-performance laptop for all your needs.</p>
+                    <p class="price">$1200.00</p>
+                    <button onclick="addToCart(this)">Add to Cart</button>
+                </article>
+
+                <article class="product-card" data-name="Smartphone" data-price="700.00">
+                    <figure>
+                        <img src="https://via.placeholder.com/150/FF0000/FFFFFF?text=Smartphone" alt="Smartphone">
+                        <figcaption>Latest Smartphone</figcaption>
+                    </figure>
+                    <h3>Latest Smartphone</h3>
+                    <p>Stay connected with our new smartphone.</p>
+                    <p class="price">$700.00</p>
+                    <button onclick="addToCart(this)">Add to Cart</button>
+                </article>
+
+                <article class="product-card" data-name="Headphones" data-price="150.00">
+                    <figure>
+                        <img src="https://via.placeholder.com/150/00FF00/FFFFFF?text=Headphones" alt="Headphones">
+                        <figcaption>Noise-Cancelling Headphones</figcaption>
+                    </figure>
+                    <h3>Noise-Cancelling Headphones</h3>
+                    <p>Immersive audio experience.</p>
+                    <p class="price">$150.00</p>
+                    <button onclick="addToCart(this)">Add to Cart</button>
+                </article>
+
+                <article class="product-card" data-name="Smartwatch" data-price="250.00">
+                    <figure>
+                        <img src="https://via.placeholder.com/150/FFFF00/000000?text=Smartwatch" alt="Smartwatch">
+                        <figcaption>Fitness Smartwatch</figcaption>
+                    </figure>
+                    <h3>Fitness Smartwatch</h3>
+                    <p>Track your health and stay active.</p>
+                    <p class="price">$250.00</p>
+                    <button onclick="addToCart(this)">Add to Cart</button>
+                </article>
+            </div>
+        </section>
+
+        <section id="cart">
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items will be displayed here by JavaScript -->
+                <p>Your cart is empty.</p>
+            </div>
+            <div class="cart-summary">
+                <p>Total Items: <span id="total-items">0</span></p>
+                <p>Subtotal: $<span id="subtotal">0.00</span></p>
+                <p>Tax (5%): $<span id="tax">0.00</span></p>
+                <h3>Grand Total: $<span id="grand-total">0.00</span></h3>
+                <button onclick="checkout()">Checkout</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SIT Shop. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

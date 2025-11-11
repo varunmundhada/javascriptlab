@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Maximum and Minimum in Array</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #34495e;
+        }
+
+        #originalArray {
+            background-color: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: "Courier New", Courier, monospace;
+            color: #34495e;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #117a65;
+        }
+
+        .results {
+            margin-top: 25px;
+            font-size: 18px;
+            text-align: left;
+            border-left: 4px solid #16a085;
+            padding-left: 15px;
+        }
+
+        .results p {
+            margin: 8px 0;
+        }
+
+        .results span {
+            font-weight: bold;
+            font-size: 20px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Find Maximum and Minimum Numbers</h1>
+
+    <div class="container">
+        <h2>Array Analysis</h2>
+        <p>The given array contains:</p>
+        <div id="originalArray">[45, 12, 89, 7, 23, 100, 5, 99, 1]</div>
+        
+        <button onclick="findMaxAndMin()">Find Maximum and Minimum</button>
+        
+        <div class="results">
+            <p id="maxResult"></p>
+            <p id="minResult"></p>
+        </div>
+    </div>
+
+    <script>
+        function findMaxAndMin() {
+            const numbers = [45, 12, 89, 7, 23, 100, 5, 99, 1];
+
+            const maxDisplay = document.getElementById('maxResult');
+            const minDisplay = document.getElementById('minResult');
+
+            if (numbers.length === 0) {
+                maxDisplay.innerHTML = "The array is empty.";
+                minDisplay.innerHTML = "";
+                return;
+            }
+
+            let maximumValue = numbers[0];
+            let minimumValue = numbers[0];
+
+            for (let i = 1; i < numbers.length; i++) {
+                const currentNumber = numbers[i];
+
+                if (currentNumber > maximumValue) {
+                    maximumValue = currentNumber;
+                }
+
+                if (currentNumber < minimumValue) {
+                    minimumValue = currentNumber;
+                }
+            }
+
+            maxDisplay.innerHTML = `Maximum Value: <span>${maximumValue}</span>`;
+            minDisplay.innerHTML = `Minimum Value: <span>${minimumValue}</span>`;
+        }
+    </script>
+
+</body>
+</html>
